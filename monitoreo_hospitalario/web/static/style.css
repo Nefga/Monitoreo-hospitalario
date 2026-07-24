@@ -1,0 +1,212 @@
+:root {
+  --azul-oscuro: #0d1b3e;
+  --azul-medio: #16285c;
+  --amarillo: #f2b705;
+  --amarillo-suave: #ffd45c;
+  --rojo-alerta: #e23b3b;
+  --texto-claro: #f4f6fb;
+  --texto-tenue: #b9c2dd;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, sans-serif;
+  background: var(--azul-oscuro);
+  color: var(--texto-claro);
+}
+
+header {
+  padding: 2rem 1.5rem 1rem;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 1.9rem;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+header h1 span {
+  color: var(--amarillo);
+}
+
+.subtitulo {
+  color: var(--texto-tenue);
+  font-style: italic;
+  margin-top: 0.3rem;
+}
+
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1.5rem 3rem;
+}
+
+.alerta-banner {
+  background: var(--rojo-alerta);
+  color: white;
+  text-align: center;
+  padding: 0.8rem;
+  border-radius: 10px;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  animation: parpadeo 1s infinite;
+}
+
+.alerta-banner.oculto { display: none; }
+
+@keyframes parpadeo {
+  50% { opacity: 0.55; }
+}
+
+.cuartos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.tarjeta-cuarto {
+  background: var(--azul-medio);
+  border-radius: 16px;
+  padding: 1rem 1.2rem;
+  border-left: 5px solid var(--color-cuarto, var(--amarillo));
+  border-top: 1px solid rgba(242, 183, 5, 0.15);
+  border-right: 1px solid rgba(242, 183, 5, 0.15);
+  border-bottom: 1px solid rgba(242, 183, 5, 0.15);
+  transition: box-shadow 0.3s;
+}
+
+.tarjeta-cuarto.critico {
+  box-shadow: 0 0 14px rgba(226, 59, 59, 0.5);
+}
+
+.tarjeta-cuarto-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+
+.tarjeta-cuarto-nombre {
+  font-weight: bold;
+  color: var(--texto-claro);
+}
+
+.tarjeta-cuarto-estado {
+  font-size: 1rem;
+}
+
+.tarjeta-cuarto-datos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem 0.6rem;
+}
+
+.tarjeta-cuarto-datos > div {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+}
+
+.mini-etiqueta {
+  color: var(--texto-tenue);
+}
+
+.mini-valor {
+  color: var(--amarillo);
+  font-weight: bold;
+}
+
+.tarjetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.tarjeta {
+  background: var(--azul-medio);
+  border-radius: 16px;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid rgba(242, 183, 5, 0.15);
+  transition: border-color 0.3s;
+}
+
+.tarjeta.critico {
+  border-color: var(--rojo-alerta);
+  box-shadow: 0 0 14px rgba(226, 59, 59, 0.4);
+}
+
+.tarjeta .icono { font-size: 1.8rem; }
+.tarjeta .etiqueta { color: var(--texto-tenue); font-size: 0.85rem; margin-top: 0.3rem; }
+.tarjeta .valor { font-size: 2rem; font-weight: bold; color: var(--amarillo); margin-top: 0.2rem; }
+.tarjeta .unidad { color: var(--texto-tenue); font-size: 0.8rem; }
+
+.panel-grafica, .panel-reporte, .panel-historial {
+  background: var(--azul-medio);
+  border-radius: 16px;
+  padding: 1.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.panel-grafica h2, .panel-reporte h2, .panel-historial h2 {
+  color: var(--amarillo);
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.reporte-controles {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+input[type="date"] {
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: none;
+  background: var(--azul-oscuro);
+  color: var(--texto-claro);
+}
+
+button {
+  background: var(--amarillo);
+  color: var(--azul-oscuro);
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button:hover { background: var(--amarillo-suave); }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+th, td {
+  padding: 0.5rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+th { color: var(--amarillo); }
+
+tr.fila-alerta td { color: var(--rojo-alerta); font-weight: bold; }
+
+footer {
+  text-align: center;
+  color: var(--texto-tenue);
+  padding: 1.5rem;
+  font-size: 0.85rem;
+}

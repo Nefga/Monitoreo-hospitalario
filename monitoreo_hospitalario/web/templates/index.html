@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monitoreo Ambiental Hospitalario</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <h1>Monitoreo Ambiental <span>Hospitalario</span></h1>
+    <p class="subtitulo">Luz · Temperatura · Humedad · Calidad del Aire — todos los cuartos</p>
+  </header>
+
+  <main>
+    <section id="alerta-banner" class="alerta-banner oculto">
+      ⚠️ ALERTA en cuarto(s): <span id="cuartos-en-alerta"></span>
+    </section>
+
+    <!-- Una tarjeta por cuarto, se crean solas conforme llegan datos -->
+    <section class="cuartos-grid" id="cuartos-grid"></section>
+
+    <section class="panel-grafica">
+      <h2>Temperatura en tiempo real — todos los cuartos</h2>
+      <canvas id="grafica-temp" height="90"></canvas>
+    </section>
+
+    <section class="panel-reporte">
+      <h2>Reporte PDF por turnos (todo el hospital)</h2>
+      <div class="reporte-controles">
+        <input type="date" id="fecha-reporte">
+        <button id="btn-reporte">Descargar reporte del día</button>
+      </div>
+    </section>
+
+    <section class="panel-historial">
+      <h2>Últimas lecturas — todos los cuartos</h2>
+      <table id="tabla-historial">
+        <thead>
+          <tr><th>Cuarto</th><th>Hora</th><th>Luz</th><th>Temp</th><th>Humedad</th><th>CO2</th><th>Estado</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    Instituto Tecnológico de Tijuana — Por: Nicole Lewis, Farid Garcia
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+  <script src="{{ url_for('static', filename='dashboard.js') }}"></script>
+</body>
+</html>
